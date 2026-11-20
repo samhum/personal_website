@@ -482,26 +482,14 @@ function initMethodologyLoop() {
   if (!step3 || !step4 || !wrapper || !loop) return;
 
   function updateLoopPosition() {
-    if (window.innerWidth <= 768) {
-      loop.style.left = '';
-      loop.style.width = '';
-      loop.style.top = '';
-      loop.style.position = '';
-      return;
-    }
-
     const wrapperRect = wrapper.getBoundingClientRect();
     const s3Rect = step3.getBoundingClientRect();
     const s4Rect = step4.getBoundingClientRect();
 
     const s3Center = (s3Rect.left + s3Rect.width / 2) - wrapperRect.left;
     const s4Center = (s4Rect.left + s4Rect.width / 2) - wrapperRect.left;
-    const topOffset = (s3Rect.bottom - wrapperRect.top);
-
-    loop.style.position = 'absolute';
-    loop.style.left = `${s3Center}px`;
-    loop.style.width = `${s4Center - s3Center}px`;
-    loop.style.top = `${topOffset}px`;
+    loop.style.setProperty('--loop-left', `${s3Center}px`);
+    loop.style.setProperty('--loop-width', `${s4Center - s3Center}px`);
   }
 
   updateLoopPosition();

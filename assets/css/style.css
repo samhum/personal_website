@@ -917,8 +917,6 @@ a.contact-pill:hover {
 .methodology-flow-wrapper {
   max-width: 960px;
   margin: 0 auto;
-  position: relative;
-  padding-bottom: 56px;
 }
 
 .methodology-flow {
@@ -926,8 +924,6 @@ a.contact-pill:hover {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  position: relative;
-  z-index: 2;
 }
 
 .flow-step {
@@ -939,7 +935,7 @@ a.contact-pill:hover {
   border-radius: var(--radius-md);
   padding: 14px 16px;
   flex: 1;
-  min-width: 165px;
+  min-width: 0;
   max-width: 215px;
   box-shadow: var(--shadow-sm);
   transition: all var(--transition-normal);
@@ -974,14 +970,19 @@ a.contact-pill:hover {
 
 /* Iterative DBR Feedback Loop (Step 04 back to Step 03) */
 .methodology-return-loop {
-  position: absolute;
-  z-index: 1;
-  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: var(--loop-width, 100%);
+  margin-top: 18px;
+  margin-left: var(--loop-left, 0px);
 }
 
 .loop-connector {
   position: relative;
-  height: 42px;
+  width: 100%;
+  height: 28px;
   border-bottom: 2px dashed var(--accent-primary);
   border-left: 2px dashed var(--accent-primary);
   border-right: 2px dashed var(--accent-primary);
@@ -994,7 +995,8 @@ a.contact-pill:hover {
 .loop-start-dot {
   position: absolute;
   top: -3px;
-  right: -4px;
+  right: -1px;
+  transform: translateX(50%);
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -1003,26 +1005,17 @@ a.contact-pill:hover {
 
 .loop-arrow-up {
   position: absolute;
-  top: -11px;
-  left: -5px;
+  top: -10px;
+  left: -1px;
+  transform: translateX(-50%);
   color: var(--accent-primary);
-  width: 12px;
-  height: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.loop-arrow-up svg {
   width: 12px;
   height: 12px;
 }
 
 .loop-pill {
-  position: absolute;
-  bottom: -15px;
-  left: 50%;
-  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100% + 112px);
   background-color: var(--bg-card);
   border: 1.5px solid var(--accent-primary);
   border-radius: var(--radius-full);
@@ -1036,7 +1029,6 @@ a.contact-pill:hover {
   box-shadow: var(--shadow-sm);
   letter-spacing: 0.3px;
   transition: all var(--transition-fast);
-  white-space: nowrap;
 }
 
 [data-theme="dark"] .loop-pill {
@@ -1047,7 +1039,7 @@ a.contact-pill:hover {
 }
 
 .loop-pill:hover {
-  transform: translateX(-50%) scale(1.03);
+  transform: scale(1.03);
   box-shadow: var(--shadow-md);
 }
 
@@ -1065,24 +1057,6 @@ a.contact-pill:hover {
 
 .methodology-banner:hover .loop-icon {
   transform: rotate(-45deg);
-}
-
-.loop-direction {
-  position: absolute;
-  bottom: -11px;
-  color: var(--accent-primary);
-  font-size: 1.1rem;
-  font-weight: 800;
-  line-height: 1;
-  opacity: 0.75;
-}
-
-.loop-dir-left {
-  left: 18%;
-}
-
-.loop-dir-right {
-  right: 18%;
 }
 
 .pill-text-mobile {
@@ -1535,6 +1509,9 @@ a.contact-pill:hover {
 }
 
 .resource-action {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
   padding-top: 12px;
   border-top: 1px solid var(--border-subtle);
 }
@@ -2277,10 +2254,6 @@ a.contact-pill:hover {
     display: none;
   }
 
-  .methodology-flow-wrapper {
-    padding-bottom: 0;
-  }
-
   .methodology-flow {
     flex-direction: column;
     gap: 10px;
@@ -2296,40 +2269,22 @@ a.contact-pill:hover {
   }
 
   .methodology-return-loop {
-    position: static !important;
-    width: 100% !important;
-    left: auto !important;
-    top: auto !important;
-    padding: 0;
+    width: 100%;
     margin-top: 14px;
+    margin-left: 0;
   }
 
   .loop-connector {
-    height: auto;
-    border: none;
-    display: flex;
-    justify-content: center;
-  }
-
-  .loop-arrow-up,
-  .loop-start-dot,
-  .loop-direction {
     display: none;
   }
 
   .loop-pill {
-    position: static;
-    transform: none;
     width: 100%;
     max-width: 340px;
     justify-content: center;
     padding: 8px 14px;
     text-align: center;
     border-style: dashed;
-  }
-
-  .loop-pill:hover {
-    transform: scale(1.02);
   }
 
   .pill-text-desktop {
